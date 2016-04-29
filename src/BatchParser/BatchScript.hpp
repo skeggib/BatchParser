@@ -11,7 +11,7 @@ using namespace std;
 
 namespace BatchParser {
 
-class BatchParser {
+class BatchScript {
 
 private:
 
@@ -20,18 +20,18 @@ private:
 
 public:
 
-	BatchParser();
-	BatchParser(string & script);
+	BatchScript();
+	BatchScript(string & script);
 
 	bool parse();
 
 	int instructionsCount();
-	BatchInstruction* getInstruction(int index);
+	BatchInstruction * getInstruction(int index);
 
 	string getScript();
 	void setScript(string & script);
 
-}; // class BatchParser
+}; // class BatchScript
 
 } // namespace BatchParser
 

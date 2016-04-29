@@ -3,20 +3,20 @@
 #include "../../cpptest/cpptest-suite.h"
 #include "../../cpptest/cpptest-assert.h"
 
-#include "../../src/BatchParser/BatchParser.hpp"
+#include "../../src/BatchParser/BatchScript.hpp"
 
 namespace BatchParser {
 
-class TestBatchParser : public Test::Suite {
+class TestBatchScript : public Test::Suite {
 
 public:
 
-	TestBatchParser() {
+	TestBatchScript() {
 
 	}
 
 
 
-}; // class TestBatchParser
+}; // class TestBatchScript
 
 } // namespace BatchParser
