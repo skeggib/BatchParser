@@ -28,6 +28,7 @@ public:
 	BatchInstruction();
 	BatchInstruction(string text);
 
+	// TODO Move split & trim to another class
 	vector<string> split(string str, string delimiter) const;
 	string trim(string str) const;
 
@@ -42,6 +43,13 @@ public:
 	void addArgument(BatchArgument & argument);
 	void removeArgument(int index);
 	void removeArgument(BatchArgument & argument);
+
+	/*!
+	 * Verifier si l'instruction contient une chaine de caracteres
+	 * @param  str Chaine de caracteres a chercher
+	 * @return     True si la chaine de caracteres a ete trouvee
+	 */
+	bool has(string str);
 
 }; // class BatchInstruction
 

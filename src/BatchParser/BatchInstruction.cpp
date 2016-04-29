@@ -160,4 +160,10 @@ void BatchInstruction::removeArgument(BatchArgument & arg) {
 	}
 }
 
+bool BatchInstruction::has(string str) {
+	if (this->text.find(str) != string::npos)
+		return true;
+	return false;
+}
+
 } // namespace BatchParser

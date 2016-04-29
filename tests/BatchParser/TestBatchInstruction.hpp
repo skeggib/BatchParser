@@ -23,6 +23,7 @@ public:
 		TEST_ADD(TestBatchInstruction::test_trim);
 		TEST_ADD(TestBatchInstruction::test_setText);
 		TEST_ADD(TestBatchInstruction::test_generate);
+		TEST_ADD(TestBatchInstruction::test_has);
 	}
 
 private:
@@ -132,6 +133,13 @@ private:
 
 		TEST_ASSERT(inst.getText() == 
 			"find \"/home/skeggib/\" -p option");
+	}
+
+	void test_has() {
+		BatchInstruction inst(
+			"blender file.blend -v -d \"/home/skeggib/\" --no-console");
+		TEST_ASSERT(inst.has("azerty") == false);
+		TEST_ASSERT(inst.has("file.blend -v -d") == true);
 	}
 
 }; // class TestBatchInstruction
