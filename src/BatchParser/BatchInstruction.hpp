@@ -3,8 +3,11 @@
 
 #include <string>
 #include <vector>
+#include <iostream>
 
 using namespace std;
+
+#include "BatchArgument.hpp"
 
 
 namespace BatchParser {
@@ -15,6 +18,10 @@ private:
 
 	string text;
 	string command;
+	vector<BatchArgument> arguments;
+
+	void parseText();
+	void generateText();
 
 public:
 
@@ -29,6 +36,12 @@ public:
 
 	string getCommand() const;
 	void setCommand(string command);
+
+	int argumentsCount() const;
+	BatchArgument * getArgument(int index);
+	void addArgument(BatchArgument & argument);
+	void removeArgument(int index);
+	void removeArgument(BatchArgument & argument);
 
 }; // class BatchInstruction
 

@@ -14,7 +14,8 @@ SRC=\
 	$(wildcard cpptest/*.cpp)\
 	tests/tests.cpp\
 	src/BatchParser/BatchParser.cpp\
-	src/BatchParser/BatchInstruction.cpp
+	src/BatchParser/BatchInstruction.cpp\
+	src/BatchParser/BatchArgument.cpp
 
 OBJ=\
 	$(SRC:.cpp=.o)
