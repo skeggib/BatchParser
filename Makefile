@@ -22,7 +22,7 @@ OBJ=\
 
 all: test
 
-test: $(TEXEC)
+test: cleantests $(TEXEC)
 	@./$(TEXEC)
 
 $(TEXEC): $(OBJ)
@@ -31,3 +31,15 @@ $(TEXEC): $(OBJ)
 
 %.o: %.cpp
 	@$(CC) -o $@ -c $< $(CFLAGS)
+
+.PHONY: clean mrproper cleantests
+
+clean:
+	@rm -rf $(OBJ)
+
+mrproper: clean
+	@rm -rf $(EXEC)
+	@rm -rf $(TEXEC)
+
+cleantests:
+	@rm -rf tests/tests.o

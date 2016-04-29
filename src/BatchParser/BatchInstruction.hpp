@@ -19,16 +19,16 @@ private:
 public:
 
 	BatchInstruction();
-	BatchInstruction(string const text);
+	BatchInstruction(string text);
 
-	vector<string> split(string const str, string const delimiter) const;
-	string trim(string const str) const;
+	vector<string> split(string str, string delimiter) const;
+	string trim(string str) const;
 
 	string getText() const;
-	void setText(string const text);
+	void setText(string text);
 
 	string getCommand() const;
-	void setCommand(string const command);
+	void setCommand(string command);
 
 }; // class BatchInstruction
 

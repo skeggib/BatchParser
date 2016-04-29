@@ -15,7 +15,29 @@ BatchInstruction::BatchInstruction(string const text)
 	this->setCommand(command);*/
 }
 
-string BatchInstruction::trim(string const str) const {
+vector<string> BatchInstruction::split(string str, string delimiter) const {
+	vector<string> vec;
+	int pos = 0;
+
+	do {
+
+		pos = str.find(delimiter);
+		
+		if (pos == string::npos)
+			vec.push_back(str);
+		else
+			vec.push_back(str.substr(0, pos));
+		
+		str = str.substr(
+			pos + delimiter.size(),
+			str.size() - pos - 1);
+
+	} while (pos != string::npos);
+
+	return vec;
+}
+
+string BatchInstruction::trim(string str) const {
 	/*string trimed = text;
 	char c = trimed[0];
 
