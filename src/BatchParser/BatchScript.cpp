@@ -3,32 +3,32 @@
 
 namespace BatchParser {
 
-BatchParser::BatchParser() {
-	this->script = "";
-}
-
-BatchParser::BatchParser(string & script) : BatchParser() {
-	this->setScript(script);
-}
-
-bool BatchParser::parse() {
+BatchScript::BatchScript() {
 	
 }
 
-int BatchParser::instructionsCount() {
+BatchScript::BatchScript(const string & script) : BatchScript() {
+	this->setScript(script);
+}
+
+void BatchScript::parse(const string & script) {
+	
+}
+
+int BatchScript::instructionsCount() {
 	return this->instructions.size();
 }
 
-BatchInstruction* BatchParser::getInstruction(int index) {
+BatchInstruction* BatchScript::getInstruction(int index) {
 	return &this->instructions[index];
 }
 
-string BatchParser::getScript() {
-	return this->script;
+string BatchScript::getScript() {
+	return "";
 }
 
-void BatchParser::setScript(string & script) {
-	this->script = script;
+void BatchScript::setScript(const string & script) {
+	this->parse(script);
 }
 
 } // namespace BatchParser
