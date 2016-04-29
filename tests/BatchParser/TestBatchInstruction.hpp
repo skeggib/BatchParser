@@ -19,6 +19,7 @@ public:
 
 	TestBatchInstruction() {
 		TEST_ADD(TestBatchInstruction::test_split);
+		TEST_ADD(TestBatchInstruction::test_trim);
 	}
 
 private:
@@ -44,6 +45,24 @@ private:
 		TEST_ASSERT_MSG(vec[1] == "ine a", 		vec[1].c_str());
 		TEST_ASSERT_MSG(vec[2] == " decoup", 	vec[2].c_str());
 		TEST_ASSERT_MSG(vec[3] == "er", 		vec[3].c_str());
+	}
+
+	void test_trim() {
+		BatchInstruction instruction;
+		string str;
+		string trimed;
+
+		str = " \t";
+		trimed = instruction.trim(str);
+		TEST_ASSERT_MSG(trimed == "",			trimed.c_str());
+
+		str = "Chaine";
+		trimed = instruction.trim(str);
+		TEST_ASSERT_MSG(trimed == "Chaine",		trimed.c_str());
+
+		str = "  \t \n   Chaine    \n   \t";
+		trimed = instruction.trim(str);
+		TEST_ASSERT_MSG(trimed == "Chaine",		trimed.c_str());
 	}
 
 }; // class TestBatchInstruction

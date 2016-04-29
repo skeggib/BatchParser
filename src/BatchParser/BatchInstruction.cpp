@@ -38,12 +38,22 @@ vector<string> BatchInstruction::split(string str, string delimiter) const {
 }
 
 string BatchInstruction::trim(string str) const {
-	/*string trimed = text;
-	char c = trimed[0];
+	string trimed = str;
+	char c;
 
-	while (c == ' ' || c == '\t' || c == '\n') {
+	c = trimed[0];
+	while ((c == ' ' || c == '\t' || c == '\n')) {
 		trimed = trimed.substr(1, trimed.size() - 1);
-	}*/
+		c = trimed[0];
+	}
+
+	c = trimed[trimed.size() - 1];
+	while ((c == ' ' || c == '\t' || c == '\n')) {
+		trimed = trimed.substr(0, trimed.size() - 1);
+		c = trimed[trimed.size() - 1];
+	}
+
+	return trimed;
 }
 
 } // namespace BatchParser
