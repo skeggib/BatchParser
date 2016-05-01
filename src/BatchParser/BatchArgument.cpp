@@ -1,5 +1,8 @@
 #include "BatchArgument.hpp"
 
+
+namespace com {
+namespace skeggib {
 namespace BatchParser {
 
 BatchArgument::BatchArgument() {
@@ -40,3 +43,5 @@ bool BatchArgument::equals(BatchArgument arg) {
 }
 
 } // namespace BatchParser
+} // namespace skeggib
+} // namespace com

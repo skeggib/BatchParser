@@ -1,5 +1,5 @@
 CC=g++
-CFLAGS=-std=c++11
+CFLAGS=-std=c++11 -w
 LDFLAGS=
 
 ifeq ($(OS),Windows_NT)

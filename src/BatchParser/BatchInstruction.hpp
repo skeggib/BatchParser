@@ -10,6 +10,8 @@ using namespace std;
 #include "BatchArgument.hpp"
 
 
+namespace com {
+namespace skeggib {
 namespace BatchParser {
 
 class BatchInstruction {
@@ -54,5 +56,7 @@ public:
 }; // class BatchInstruction
 
 } // namespace BatchParser
+} // namespace skeggib
+} // namespace com
 
 #endif // BATCHPARSER_BATCHINSTRUCTION_H

@@ -5,6 +5,9 @@
 
 #include "../../src/BatchParser/BatchScript.hpp"
 
+
+namespace com {
+namespace skeggib {
 namespace BatchParser {
 
 class TestBatchScript : public Test::Suite {
@@ -37,5 +40,7 @@ set CTLMD_LICENSE_FILE=1828@yvav3260;1828@yvav3270;1828@yvav3330\n\
 	}
 
 }; // class TestBatchScript
+} // namespace skeggib
+} // namespace com
 
 } // namespace BatchParser

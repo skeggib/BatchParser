@@ -1,5 +1,8 @@
 #include "BatchInstruction.hpp"
 
+
+namespace com {
+namespace skeggib {
 namespace BatchParser {
 
 BatchInstruction::BatchInstruction() {
@@ -167,3 +170,5 @@ bool BatchInstruction::has(string str) {
 }
 
 } // namespace BatchParser
+} // namespace skeggib
+} // namespace com

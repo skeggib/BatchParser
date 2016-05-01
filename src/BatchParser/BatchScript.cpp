@@ -1,6 +1,8 @@
 #include "BatchScript.hpp"
 
 
+namespace com {
+namespace skeggib {
 namespace BatchParser {
 
 BatchScript::BatchScript() {
@@ -32,3 +34,5 @@ void BatchScript::setScript(const string & script) {
 }
 
 } // namespace BatchParser
+} // namespace skeggib
+} // namespace com

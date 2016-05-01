@@ -9,6 +9,8 @@ using namespace std;
 #include "BatchInstruction.hpp"
 
 
+namespace com {
+namespace skeggib {
 namespace BatchParser {
 
 class BatchScript {
@@ -33,5 +35,7 @@ public:
 }; // class BatchScript
 
 } // namespace BatchParser
+} // namespace skeggib
+} // namespace com
 
 #endif // BATCHPARSER_HPP

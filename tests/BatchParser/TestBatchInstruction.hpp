@@ -12,6 +12,8 @@
 using namespace std;
 
 
+namespace com {
+namespace skeggib {
 namespace BatchParser {
 
 class TestBatchInstruction : public Test::Suite {
@@ -143,5 +145,7 @@ private:
 	}
 
 }; // class TestBatchInstruction
+} // namespace skeggib
+} // namespace com
 
 } // namespace BatchParser

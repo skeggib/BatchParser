@@ -4,7 +4,7 @@
 #include "BatchParser/TestBatchScript.hpp"
 #include "BatchParser/TestBatchInstruction.hpp"
 
-using namespace BatchParser;
+using namespace com::skeggib::BatchParser;
 
 bool runTests();
 
