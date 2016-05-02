@@ -17,11 +17,11 @@ BatchInstruction::BatchInstruction(string const text)
 }
 
 void BatchInstruction::parseText() {
-	vector<string> vec = this->split(this->text, " ");
+	vector<String> vec = this->text.split(" ");
 	for (int i = 0; i < vec.size(); i++) {
-		vec[i] = this->trim(vec[i]);
+		vec[i].trim();
 	}
-	vector<string>::iterator it = vec.begin();
+	vector<String>::iterator it = vec.begin();
 	do {
 		if (*it == "")
 			it = vec.erase(it);
@@ -73,53 +73,13 @@ void BatchInstruction::generateText() {
 	}
 }
 
-vector<string> BatchInstruction::split(string str, string delimiter) const {
-	vector<string> vec;
-	int pos = 0;
-
-	do {
-
-		pos = str.find(delimiter);
-		
-		if (pos == string::npos)
-			vec.push_back(str);
-		else
-			vec.push_back(str.substr(0, pos));
-		
-		str = str.substr(
-			pos + delimiter.size(),
-			str.size() - pos - 1);
-
-	} while (pos != string::npos);
-
-	return vec;
-}
-
-string BatchInstruction::trim(string str) const {
-	string trimed = str;
-	char c;
-
-	c = trimed[0];
-	while ((c == ' ' || c == '\t' || c == '\n')) {
-		trimed = trimed.substr(1, trimed.size() - 1);
-		c = trimed[0];
-	}
-
-	c = trimed[trimed.size() - 1];
-	while ((c == ' ' || c == '\t' || c == '\n')) {
-		trimed = trimed.substr(0, trimed.size() - 1);
-		c = trimed[trimed.size() - 1];
-	}
-
-	return trimed;
-}
-
-string BatchInstruction::getText() const {
+String BatchInstruction::getText() const {
 	return this->text;
 }
 
-void BatchInstruction::setText(string text) {
-	this->text = this->trim(text);
+void BatchInstruction::setText(String text) {
+	this->text = text;
+	this->text.trim();
 	this->parseText();
 }
 
@@ -163,7 +123,7 @@ void BatchInstruction::removeArgument(BatchArgument & arg) {
 	}
 }
 
-bool BatchInstruction::has(string str) {
+bool BatchInstruction::has(String str) {
 	if (this->text.find(str) != string::npos)
 		return true;
 	return false;

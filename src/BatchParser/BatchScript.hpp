@@ -1,5 +1,5 @@
-#ifndef BATCHPARSER_HPP
-#define BATCHPARSER_HPP
+#ifndef BATCHPARSER_BATCHSCRIPT_HPP
+#define BATCHPARSER_BATCHSCRIPT_HPP
 
 #include <string>
 #include <vector>
@@ -38,4 +38,4 @@ public:
 } // namespace skeggib
 } // namespace com
 
-#endif // BATCHPARSER_HPP
+#endif // BATCHPARSER_BATCHSCRIPT_HPP

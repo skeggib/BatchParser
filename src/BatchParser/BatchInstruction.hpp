@@ -7,6 +7,7 @@
 
 using namespace std;
 
+#include "String.hpp"
 #include "BatchArgument.hpp"
 
 
@@ -18,7 +19,7 @@ class BatchInstruction {
 
 private:
 
-	string text;
+	String text;
 	string command;
 	vector<BatchArgument> arguments;
 
@@ -30,12 +31,8 @@ public:
 	BatchInstruction();
 	BatchInstruction(string text);
 
-	// TODO Move split & trim to another class
-	vector<string> split(string str, string delimiter) const;
-	string trim(string str) const;
-
-	string getText() const;
-	void setText(string text);
+	String getText() const;
+	void setText(String text);
 
 	string getCommand() const;
 	void setCommand(string command);
@@ -51,7 +48,7 @@ public:
 	 * @param  str Chaine de caracteres a chercher
 	 * @return     True si la chaine de caracteres a ete trouvee
 	 */
-	bool has(string str);
+	bool has(String str);
 
 }; // class BatchInstruction
 
