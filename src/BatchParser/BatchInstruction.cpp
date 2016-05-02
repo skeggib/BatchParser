@@ -10,7 +10,7 @@ BatchInstruction::BatchInstruction() {
 	this->command = "";
 }
 
-BatchInstruction::BatchInstruction(string const text)
+BatchInstruction::BatchInstruction(String const text)
 	: BatchInstruction() {
 
 	this->setText(text);
@@ -83,11 +83,11 @@ void BatchInstruction::setText(String text) {
 	this->parseText();
 }
 
-string BatchInstruction::getCommand() const {
+String BatchInstruction::getCommand() const {
 	return this->command;
 }
 
-void BatchInstruction::setCommand(string command) {
+void BatchInstruction::setCommand(String command) {
 	this->command = command;
 	this->generateText();
 }

@@ -13,6 +13,9 @@ endif
 SRC=\
 	$(wildcard cpptest/*.cpp)\
 	tests/tests.cpp\
+	tests/BatchParser/TestString.cpp\
+	tests/BatchParser/TestBatchScript.cpp\
+	tests/BatchParser/TestBatchInstruction.cpp\
 	src/BatchParser/String.cpp\
 	src/BatchParser/BatchScript.cpp\
 	src/BatchParser/BatchInstruction.cpp\
@@ -24,7 +27,7 @@ OBJ=\
 
 all: $(TEXEC)
 
-test: cleantests $(TEXEC)
+test: $(TEXEC)
 	@./$(TEXEC)
 
 $(TEXEC): $(OBJ)
@@ -34,7 +37,7 @@ $(TEXEC): $(OBJ)
 %.o: %.cpp
 	@$(CC) -o $@ -c $< $(CFLAGS)
 
-.PHONY: clean mrproper cleantests
+.PHONY: clean mrproper
 
 clean:
 	@rm -rf $(OBJ)
@@ -42,6 +45,3 @@ clean:
 mrproper: clean
 	@rm -rf $(EXEC)
 	@rm -rf $(TEXEC)
-
-cleantests:
-	@rm -rf tests/tests.o

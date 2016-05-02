@@ -25,6 +25,8 @@ public:
 	String(const string & str);
 	String(const String & str);
 
+	~String();
+
 	vector<String> split(const string & delimiter);
 	vector<String> split(const char * c);
 
@@ -37,6 +39,10 @@ public:
 	String & operator=(const char * c);
 
 	String & operator+=(const string & str);
+
+	String & operator+(const String & str);
+	String & operator+(const string & str);
+	String & operator+(const char * c);
 
 	char operator[](int i);
 

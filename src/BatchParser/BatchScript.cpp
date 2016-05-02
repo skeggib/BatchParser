@@ -6,7 +6,7 @@ namespace skeggib {
 namespace BatchParser {
 
 BatchScript::BatchScript() {
-	
+
 }
 
 BatchScript::BatchScript(const string & script) : BatchScript() {
@@ -14,7 +14,20 @@ BatchScript::BatchScript(const string & script) : BatchScript() {
 }
 
 void BatchScript::parse(const string & script) {
-	
+	String str(script);
+	vector<String> vec = str.split("\n");
+	vector<String>::iterator it = vec.begin();
+
+	while (it != vec.end()) {
+		if (*it == "")
+			vec.erase(it);
+		else
+			it++;
+	}
+
+	for (int i = 0; i < vec.size(); i++) {
+		this->instructions.push_back(BatchInstruction(vec[i]));
+	}
 }
 
 int BatchScript::instructionsCount() {
@@ -26,7 +39,13 @@ BatchInstruction* BatchScript::getInstruction(int index) {
 }
 
 string BatchScript::getScript() {
-	return "";
+	String str = "";
+
+	for (int i = 0; i < this->instructions.size(); i++) {
+		str += this->instructions[i].getText() + "\n";
+	}
+
+	return str;
 }
 
 void BatchScript::setScript(const string & script) {

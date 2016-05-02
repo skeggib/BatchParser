@@ -20,7 +20,7 @@ class BatchInstruction {
 private:
 
 	String text;
-	string command;
+	String command;
 	vector<BatchArgument> arguments;
 
 	void parseText();
@@ -29,13 +29,13 @@ private:
 public:
 
 	BatchInstruction();
-	BatchInstruction(string text);
+	BatchInstruction(String text);
 
 	String getText() const;
 	void setText(String text);
 
-	string getCommand() const;
-	void setCommand(string command);
+	String getCommand() const;
+	void setCommand(String command);
 
 	int argumentsCount() const;
 	BatchArgument * getArgument(int index);

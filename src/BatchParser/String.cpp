@@ -21,6 +21,10 @@ String::String(const String & str) {
 	this->basic_str = str.basic_str;
 }
 
+String::~String() {
+	
+}
+
 vector<String> String::split(const string & delimiter) {
 	this->split(delimiter.c_str());
 }
@@ -87,6 +91,21 @@ String & String::operator=(const char * c) {
 
 String & String::operator+=(const string & str) {
 	this->basic_str += str;
+	return *this;
+}
+
+String & String::operator+(const String & str) {
+	this->basic_str += str.basic_str;
+	return *this;
+}
+
+String & String::operator+(const string & str) {
+	this->basic_str += str;
+	return *this;
+}
+
+String & String::operator+(const char * c) {
+	this->basic_str += c;
 	return *this;
 }
 
