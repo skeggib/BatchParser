@@ -9,14 +9,14 @@ BatchScript::BatchScript() {
 
 }
 
-BatchScript::BatchScript(const string & script) : BatchScript() {
+BatchScript::BatchScript(string script) : BatchScript() {
 	this->setScript(script);
 }
 
-void BatchScript::parse(const string & script) {
-	String str(script);
-	vector<String> vec = str.split("\n");
-	vector<String>::iterator it = vec.begin();
+void BatchScript::parse(string script) {
+	string str(script);
+	vector<string> vec = StrHelper::split(str, "\n");
+	vector<string>::iterator it = vec.begin();
 
 	while (it != vec.end()) {
 		if (*it == "")
@@ -30,16 +30,27 @@ void BatchScript::parse(const string & script) {
 	}
 }
 
+vector<BatchInstruction*> BatchScript::search(string str) {
+	vector<BatchInstruction*> vec;
+
+	for (int i = 0; i < this->instructions.size(); i++) {
+		if (this->instructions[i].has(str))
+			vec.push_back(&this->instructions[i]);
+	}
+
+	return vec;
+}
+
 int BatchScript::instructionsCount() {
 	return this->instructions.size();
 }
 
 BatchInstruction* BatchScript::getInstruction(int index) {
-	return &this->instructions[index];
+	return &(this->instructions[index]);
 }
 
 string BatchScript::getScript() {
-	String str = "";
+	string str = "";
 
 	for (int i = 0; i < this->instructions.size(); i++) {
 		str += this->instructions[i].getText() + "\n";
@@ -48,7 +59,7 @@ string BatchScript::getScript() {
 	return str;
 }
 
-void BatchScript::setScript(const string & script) {
+void BatchScript::setScript(string script) {
 	this->parse(script);
 }
 

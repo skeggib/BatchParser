@@ -10,18 +10,18 @@ BatchInstruction::BatchInstruction() {
 	this->command = "";
 }
 
-BatchInstruction::BatchInstruction(String const text)
+BatchInstruction::BatchInstruction(string const text)
 	: BatchInstruction() {
 
 	this->setText(text);
 }
 
 void BatchInstruction::parseText() {
-	vector<String> vec = this->text.split(" ");
+	vector<string> vec = StrHelper::split(this->text, " ");
 	for (int i = 0; i < vec.size(); i++) {
-		vec[i].trim();
+		vec[i] = StrHelper::trim(vec[i]);
 	}
-	vector<String>::iterator it = vec.begin();
+	vector<string>::iterator it = vec.begin();
 	do {
 		if (*it == "")
 			it = vec.erase(it);
@@ -73,21 +73,20 @@ void BatchInstruction::generateText() {
 	}
 }
 
-String BatchInstruction::getText() const {
+string BatchInstruction::getText() const {
 	return this->text;
 }
 
-void BatchInstruction::setText(String text) {
-	this->text = text;
-	this->text.trim();
+void BatchInstruction::setText(string text) {
+	this->text = StrHelper::trim(text);;
 	this->parseText();
 }
 
-String BatchInstruction::getCommand() const {
+string BatchInstruction::getCommand() const {
 	return this->command;
 }
 
-void BatchInstruction::setCommand(String command) {
+void BatchInstruction::setCommand(string command) {
 	this->command = command;
 	this->generateText();
 }
@@ -123,7 +122,7 @@ void BatchInstruction::removeArgument(BatchArgument & arg) {
 	}
 }
 
-bool BatchInstruction::has(String str) {
+bool BatchInstruction::has(string str) {
 	if (this->text.find(str) != string::npos)
 		return true;
 	return false;

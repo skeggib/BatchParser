@@ -7,7 +7,7 @@
 
 using namespace std;
 
-#include "String.hpp"
+#include "StrHelper.hpp"
 #include "BatchArgument.hpp"
 
 
@@ -19,8 +19,8 @@ class BatchInstruction {
 
 private:
 
-	String text;
-	String command;
+	string text;
+	string command;
 	vector<BatchArgument> arguments;
 
 	void parseText();
@@ -29,13 +29,13 @@ private:
 public:
 
 	BatchInstruction();
-	BatchInstruction(String text);
+	BatchInstruction(string text);
 
-	String getText() const;
-	void setText(String text);
+	string getText() const;
+	void setText(string text);
 
-	String getCommand() const;
-	void setCommand(String command);
+	string getCommand() const;
+	void setCommand(string command);
 
 	int argumentsCount() const;
 	BatchArgument * getArgument(int index);
@@ -48,7 +48,7 @@ public:
 	 * @param  str Chaine de caracteres a chercher
 	 * @return     True si la chaine de caracteres a ete trouvee
 	 */
-	bool has(String str);
+	bool has(string str);
 
 }; // class BatchInstruction
 

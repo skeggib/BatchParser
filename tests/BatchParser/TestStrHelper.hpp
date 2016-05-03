@@ -3,7 +3,7 @@
 #include "../../cpptest/cpptest-suite.h"
 #include "../../cpptest/cpptest-assert.h"
 
-#include "../../src/BatchParser/String.hpp"
+#include "../../src/BatchParser/StrHelper.hpp"
 
 
 namespace com {

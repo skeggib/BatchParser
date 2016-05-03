@@ -1,7 +1,7 @@
 #include "../cpptest/cpptest-suite.h"
 #include "../cpptest/cpptest-textoutput.h"
 
-#include "BatchParser/TestString.hpp"
+#include "BatchParser/TestStrHelper.hpp"
 #include "BatchParser/TestBatchScript.hpp"
 #include "BatchParser/TestBatchInstruction.hpp"
 

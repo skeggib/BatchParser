@@ -19,18 +19,20 @@ private:
 
 	vector<BatchInstruction> instructions;
 
-	void parse(const string & script);
+	void parse(string script);
 
 public:
 
 	BatchScript();
-	BatchScript(const string & script);
+	BatchScript(string script);
+
+	vector<BatchInstruction*> search(string str);
 
 	int instructionsCount();
 	BatchInstruction * getInstruction(int index);
 
 	string getScript();
-	void setScript(const string & script);
+	void setScript(string script);
 
 }; // class BatchScript
 

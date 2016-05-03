@@ -13,10 +13,10 @@ endif
 SRC=\
 	$(wildcard cpptest/*.cpp)\
 	tests/tests.cpp\
-	tests/BatchParser/TestString.cpp\
+	tests/BatchParser/TestStrHelper.cpp\
 	tests/BatchParser/TestBatchScript.cpp\
 	tests/BatchParser/TestBatchInstruction.cpp\
-	src/BatchParser/String.cpp\
+	src/BatchParser/StrHelper.cpp\
 	src/BatchParser/BatchScript.cpp\
 	src/BatchParser/BatchInstruction.cpp\
 	src/BatchParser/BatchArgument.cpp
