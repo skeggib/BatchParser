@@ -7,9 +7,12 @@
 
 using namespace std;
 
+#include "StrHelper.hpp"
 #include "BatchArgument.hpp"
 
 
+namespace com {
+namespace skeggib {
 namespace BatchParser {
 
 /**
@@ -52,10 +55,6 @@ public:
 	 * @param text Texte a parser
 	 */
 	BatchInstruction(string text);
-
-	// TODO Move split & trim to another class
-	vector<string> split(string str, string delimiter) const;
-	string trim(string str) const;
 
 	/**
 	 * @brief Lire le texte genere
@@ -130,5 +129,7 @@ public:
 }; // class BatchInstruction
 
 } // namespace BatchParser
+} // namespace skeggib
+} // namespace com
 
 #endif // BATCHPARSER_BATCHINSTRUCTION_H

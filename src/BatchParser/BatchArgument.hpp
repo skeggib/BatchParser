@@ -6,6 +6,8 @@
 using namespace std;
 
 
+namespace com {
+namespace skeggib {
 namespace BatchParser {
 
 /**
@@ -69,5 +71,7 @@ public:
 }; // class BatchArgument
 
 } // namespace BatchParser
+} // namespace skeggib
+} // namespace com
 
 #endif // BATCHPARSER_BATCHARGUMENT_H

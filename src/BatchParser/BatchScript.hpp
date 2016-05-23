@@ -1,5 +1,5 @@
-#ifndef BATCHPARSER_HPP
-#define BATCHPARSER_HPP
+#ifndef BATCHPARSER_BATCHSCRIPT_HPP
+#define BATCHPARSER_BATCHSCRIPT_HPP
 
 #include <string>
 #include <vector>
@@ -9,6 +9,8 @@ using namespace std;
 #include "BatchInstruction.hpp"
 
 
+namespace com {
+namespace skeggib {
 namespace BatchParser {
 
 /**
@@ -44,6 +46,8 @@ public:
 	 */
 	BatchScript(const string & script);
 
+	vector<BatchInstruction*> search(string str);
+
 	/**
 	 * @brief Nombre d'instructions du script
 	 * @return Le nombre d'instructions du script
@@ -71,10 +75,12 @@ public:
 	 * 
 	 * @param script Script a parser
 	 */
-	void setScript(const string & script);
+	void setScript(string script);
 
 }; // class BatchScript
 
 } // namespace BatchParser
+} // namespace skeggib
+} // namespace com
 
-#endif // BATCHPARSER_HPP
+#endif // BATCHPARSER_BATCHSCRIPT_HPP

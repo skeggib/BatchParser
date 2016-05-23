@@ -1,5 +1,8 @@
 #include "BatchInstruction.hpp"
 
+
+namespace com {
+namespace skeggib {
 namespace BatchParser {
 
 BatchInstruction::BatchInstruction() {
@@ -14,9 +17,9 @@ BatchInstruction::BatchInstruction(string const text)
 }
 
 void BatchInstruction::parseText() {
-	vector<string> vec = this->split(this->text, " ");
+	vector<string> vec = StrHelper::split(this->text, " ");
 	for (int i = 0; i < vec.size(); i++) {
-		vec[i] = this->trim(vec[i]);
+		vec[i] = StrHelper::trim(vec[i]);
 	}
 	vector<string>::iterator it = vec.begin();
 	do {
@@ -71,53 +74,12 @@ void BatchInstruction::generateText() {
 	}
 }
 
-vector<string> BatchInstruction::split(string str, string delimiter) const {
-	vector<string> vec;
-	int pos = 0;
-
-	do {
-
-		pos = str.find(delimiter);
-		
-		if (pos == string::npos)
-			vec.push_back(str);
-		else
-			vec.push_back(str.substr(0, pos));
-		
-		str = str.substr(
-			pos + delimiter.size(),
-			str.size() - pos - 1);
-
-	} while (pos != string::npos);
-
-	return vec;
-}
-
-string BatchInstruction::trim(string str) const {
-	string trimed = str;
-	char c;
-
-	c = trimed[0];
-	while ((c == ' ' || c == '\t' || c == '\n')) {
-		trimed = trimed.substr(1, trimed.size() - 1);
-		c = trimed[0];
-	}
-
-	c = trimed[trimed.size() - 1];
-	while ((c == ' ' || c == '\t' || c == '\n')) {
-		trimed = trimed.substr(0, trimed.size() - 1);
-		c = trimed[trimed.size() - 1];
-	}
-
-	return trimed;
-}
-
 string BatchInstruction::getText() const {
 	return this->text;
 }
 
 void BatchInstruction::setText(string text) {
-	this->text = this->trim(text);
+	this->text = StrHelper::trim(text);;
 	this->parseText();
 }
 
@@ -168,3 +130,5 @@ bool BatchInstruction::has(string str) {
 }
 
 } // namespace BatchParser
+} // namespace skeggib
+} // namespace com

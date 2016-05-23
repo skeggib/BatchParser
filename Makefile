@@ -1,5 +1,5 @@
 CC=g++
-CFLAGS=-std=c++11
+CFLAGS=-std=c++11 -w -g
 LDFLAGS=
 
 ifeq ($(OS),Windows_NT)
@@ -13,6 +13,10 @@ endif
 SRC=\
 	$(wildcard cpptest/*.cpp)\
 	tests/tests.cpp\
+	tests/BatchParser/TestStrHelper.cpp\
+	tests/BatchParser/TestBatchScript.cpp\
+	tests/BatchParser/TestBatchInstruction.cpp\
+	src/BatchParser/StrHelper.cpp\
 	src/BatchParser/BatchScript.cpp\
 	src/BatchParser/BatchInstruction.cpp\
 	src/BatchParser/BatchArgument.cpp
@@ -21,9 +25,9 @@ OBJ=\
 	$(SRC:.cpp=.o)
 
 
-all: test
+all: $(TEXEC)
 
-test: cleantests $(TEXEC)
+test: $(TEXEC)
 	@./$(TEXEC)
 
 $(TEXEC): $(OBJ)
@@ -34,7 +38,7 @@ $(TEXEC): $(OBJ)
 	@echo $<
 	@$(CC) -o $@ -c $< $(CFLAGS)
 
-.PHONY: clean mrproper cleantests
+.PHONY: clean mrproper
 
 clean:
 	@rm -rf $(OBJ)
@@ -42,6 +46,3 @@ clean:
 mrproper: clean
 	@rm -rf $(EXEC)
 	@rm -rf $(TEXEC)
-
-cleantests:
-	@rm -rf tests/tests.o
