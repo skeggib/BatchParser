@@ -2,6 +2,10 @@
 
 **BatchParser** permet de lire et de modifier des scripts batch en C++.
 
+## Documentation
+
+Pour générer la documentation : lancer Doxygen avec le fichier de configuration 'doc/doxygen/Doxyfile'.
+
 ## Utilisation
 
 Pour les exemples qui vont suivre nous allons utiliser ce script batch (qui n'a aucun sens dans ce contexte) :
