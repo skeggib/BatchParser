@@ -44,8 +44,13 @@ BatchArgument::BatchArgument(string name, string value)
 	this->setValue(value);
 }
 
+BatchArgument::BatchArgument(const BatchArgument & arg) {
+	this->name = arg.name;
+	this->value = arg.value;
+}
+
 BatchArgument::~BatchArgument() {
-	
+
 }
 
 string BatchArgument::getName() {

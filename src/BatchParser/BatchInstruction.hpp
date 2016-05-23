@@ -82,6 +82,13 @@ public:
 	 */
 	BatchInstruction(string text);
 
+	/**
+	 * @brief Constructeur par copie
+	 * 
+	 * @param i
+	 */
+	BatchInstruction(const BatchInstruction & inst);
+
 	~BatchInstruction();
 
 	/**

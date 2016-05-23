@@ -43,8 +43,17 @@ BatchInstruction::BatchInstruction(string const text)
 	this->setText(text);
 }
 
+BatchInstruction::BatchInstruction(const BatchInstruction & inst) {
+	this->text = inst.text;
+	this->command = inst.command;
+
+	for (int i = 0; i < inst.arguments.size(); ++i) {
+		this->arguments.push_back(BatchArgument(inst.arguments[i]));
+	}
+}
+
 BatchInstruction::~BatchInstruction() {
-	
+
 }
 
 void BatchInstruction::parseText() {
