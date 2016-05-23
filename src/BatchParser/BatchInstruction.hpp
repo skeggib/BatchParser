@@ -82,6 +82,8 @@ public:
 	 */
 	BatchInstruction(string text);
 
+	~BatchInstruction();
+
 	/**
 	 * @brief Lire le texte genere
 	 * @details Genere le texte a partir de la commande et des arguments

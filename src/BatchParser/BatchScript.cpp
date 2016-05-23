@@ -40,6 +40,10 @@ BatchScript::BatchScript(const string & script) : BatchScript() {
 	this->setScript(script);
 }
 
+BatchScript::~BatchScript() {
+	
+}
+
 void BatchScript::parse(const string & script) {
 	string str(script);
 	vector<string> vec = StrHelper::split(str, "\n");

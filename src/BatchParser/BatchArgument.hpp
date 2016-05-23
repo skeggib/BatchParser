@@ -64,6 +64,8 @@ public:
 	 */
 	BatchArgument(string name, string value);
 
+	~BatchArgument();
+
 	/**
 	 * @brief Lire le nom de l'argument
 	 * @return Le nom de l'argument

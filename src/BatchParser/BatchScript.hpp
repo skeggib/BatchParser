@@ -72,6 +72,8 @@ public:
 	 */
 	BatchScript(const string & script);
 
+	~BatchScript();
+
 	vector<BatchInstruction*> search(string str);
 
 	/**

@@ -43,6 +43,10 @@ BatchInstruction::BatchInstruction(string const text)
 	this->setText(text);
 }
 
+BatchInstruction::~BatchInstruction() {
+	
+}
+
 void BatchInstruction::parseText() {
 	vector<string> vec = StrHelper::split(this->text, " ");
 	for (int i = 0; i < vec.size(); i++) {
