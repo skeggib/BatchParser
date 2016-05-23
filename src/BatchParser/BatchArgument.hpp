@@ -65,6 +65,15 @@ public:
 	BatchArgument(string name, string value);
 
 	/**
+	 * @brief Constructeur par copie
+	 * 
+	 * @param arg
+	 */
+	BatchArgument(const BatchArgument & arg);
+
+	~BatchArgument();
+
+	/**
 	 * @brief Lire le nom de l'argument
 	 * @return Le nom de l'argument
 	 */

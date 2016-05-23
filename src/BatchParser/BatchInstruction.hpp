@@ -83,6 +83,15 @@ public:
 	BatchInstruction(string text);
 
 	/**
+	 * @brief Constructeur par copie
+	 * 
+	 * @param i
+	 */
+	BatchInstruction(const BatchInstruction & inst);
+
+	~BatchInstruction();
+
+	/**
 	 * @brief Lire le texte genere
 	 * @details Genere le texte a partir de la commande et des arguments
 	 * @return Texte genere de l'instruction

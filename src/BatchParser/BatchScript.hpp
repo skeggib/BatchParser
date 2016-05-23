@@ -72,6 +72,15 @@ public:
 	 */
 	BatchScript(const string & script);
 
+	/**
+	 * @brief Constructeur par copie
+	 * 
+	 * @param script
+	 */
+	BatchScript(const BatchScript & script);
+
+	~BatchScript();
+
 	vector<BatchInstruction*> search(string str);
 
 	/**
