@@ -52,6 +52,7 @@ void BatchInstruction::parseText() {
 	}
 
 	this->arguments = arguments;
+	this->generateText();
 }
 
 void BatchInstruction::generateText() {
@@ -60,12 +61,12 @@ void BatchInstruction::generateText() {
 		BatchArgument cur_arg = this->arguments[i];
 
 		if (cur_arg.getName() != "")
-			text += " " + cur_arg.getName();
+			this->text += " " + cur_arg.getName();
 		if (cur_arg.getValue() != "") {
 			if (cur_arg.getValue()[0] == '-' || cur_arg.getValue()[0] == '/')
-				text += " \"" + cur_arg.getValue() + "\"";
+				this->text += " \"" + cur_arg.getValue() + "\"";
 			else
-				text += " " + cur_arg.getValue();
+				this->text += " " + cur_arg.getValue();
 		}
 	}
 }

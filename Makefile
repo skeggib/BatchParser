@@ -31,6 +31,7 @@ $(TEXEC): $(OBJ)
 	@$(CC) -o $@ $^ $(LDFLAGS)
 
 %.o: %.cpp
+	@echo $<
 	@$(CC) -o $@ -c $< $(CFLAGS)
 
 .PHONY: clean mrproper cleantests
