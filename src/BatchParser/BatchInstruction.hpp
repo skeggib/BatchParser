@@ -96,7 +96,7 @@ public:
 	 * @details Genere le texte a partir de la commande et des arguments
 	 * @return Texte genere de l'instruction
 	 */
-	string getText() const;
+	string getText();
 
 	/**
 	 * @brief Parser un texte

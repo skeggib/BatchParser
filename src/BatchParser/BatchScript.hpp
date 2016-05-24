@@ -98,6 +98,21 @@ public:
 	BatchInstruction * getInstruction(int index);
 
 	/**
+	 * @brief Ajouter une instruction a la fin du script
+	 * 
+	 * @param inst Intruction a ajouter
+	 */
+	void addInstruction(const BatchInstruction & inst);
+
+	/**
+	 * @brief Inserer une instruction dans le script
+	 * 
+	 * @param BatchInstruction Instruction a inserer
+	 * @param index Index ou sera inseree l'instruction
+	 */
+	void insertInstruction(const BatchInstruction & inst, int index);
+
+	/**
 	 * @brief Lire le script
 	 * @details Genere le script a partir des instructions, le script retourne
 	 * peut differer du script donne en parametre a setScript ou au constructeur

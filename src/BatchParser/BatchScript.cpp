@@ -82,8 +82,16 @@ int BatchScript::instructionsCount() {
 	return this->instructions.size();
 }
 
-BatchInstruction* BatchScript::getInstruction(int index) {
+BatchInstruction * BatchScript::getInstruction(int index) {
 	return &(this->instructions[index]);
+}
+
+void BatchScript::addInstruction(const BatchInstruction & inst) {
+	this->instructions.push_back(inst);
+}
+
+void BatchScript::insertInstruction(const BatchInstruction & inst, int index) {
+	this->instructions.insert(this->instructions.begin() + index, inst);
 }
 
 string BatchScript::getScript() {
