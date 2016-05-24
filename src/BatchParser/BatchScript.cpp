@@ -94,6 +94,15 @@ void BatchScript::insertInstruction(const BatchInstruction & inst, int index) {
 	this->instructions.insert(this->instructions.begin() + index, inst);
 }
 
+int BatchScript::indexOf(const BatchInstruction * inst) {
+	for (int i = 0; i < this->instructions.size(); ++i) {
+		if (&this->instructions[i] == inst)
+			return i;
+	}
+
+	return -1;
+}
+
 string BatchScript::getScript() {
 	string str = "";
 

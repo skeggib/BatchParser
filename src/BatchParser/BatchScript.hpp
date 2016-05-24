@@ -113,6 +113,15 @@ public:
 	void insertInstruction(const BatchInstruction & inst, int index);
 
 	/**
+	 * @brief Lire la position d'une instruction
+	 * 
+	 * @param inst Instruction
+	 * @return Position de l'instruction ou -1 si l'instruction 
+	 * n'a pas ete trouvee
+	 */
+	int indexOf(const BatchInstruction * inst);
+
+	/**
 	 * @brief Lire le script
 	 * @details Genere le script a partir des instructions, le script retourne
 	 * peut differer du script donne en parametre a setScript ou au constructeur
