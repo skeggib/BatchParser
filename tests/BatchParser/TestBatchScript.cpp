@@ -61,6 +61,27 @@ void TestBatchScript::test_search() {
 	TEST_ASSERT(vec[2] == bat_script.getInstruction(4));
 }
 
+void TestBatchScript::test_getInstruction() {
+	BatchScript bat_script(this->script);
+	BatchInstruction * inst = bat_script.getInstruction(1);
+	inst->getArgument(0)->setValue("on");
+
+	TEST_ASSERT_MSG(bat_script.getInstruction(1)->getText() == "@echo on",
+		("Expected : '@echo on', given : '"
+		+ bat_script.getInstruction(1)->getText() + "'").c_str());
+
+	TEST_ASSERT(bat_script.getScript() == "\
+set REF_FRAME=63\n\
+@echo on\n\
+set MAYA_VERSION=2015\n\
+set MAYA_L=\\yvun0001\\nt02\\V3\\maya_64b.V\%MAYA_VERSION\%R0I1\n\
+set MAYA_LOCATION=\%MAYA_L\%\\apl_server\\Maya\%MAYA_VERSION\%\n\
+FOR /f \"tokens=*\" %%G IN ('dir /b') DO (\n\
+echo %%G\n\
+)\n\
+set CTLMD_LICENSE_FILE=1828@yvav3260;1828@yvav3270;1828@yvav3330\n");
+}
+
 } // namespace BatchParser
 } // namespace skeggib
 } // namespace com

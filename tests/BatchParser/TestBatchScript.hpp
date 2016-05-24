@@ -57,6 +57,7 @@ set CTLMD_LICENSE_FILE=1828@yvav3260;1828@yvav3270;1828@yvav3330\n";
 
 		TEST_ADD(TestBatchScript::test_parse);
 		TEST_ADD(TestBatchScript::test_search);
+		TEST_ADD(TestBatchScript::test_getInstruction);
 	}
 
 private:
@@ -65,6 +66,7 @@ private:
 
 	void test_parse();
 	void test_search();
+	void test_getInstruction();
 
 }; // class TestBatchScript
 

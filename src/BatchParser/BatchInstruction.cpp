@@ -95,7 +95,6 @@ void BatchInstruction::parseText() {
 	}
 
 	this->arguments = arguments;
-	this->generateText();
 }
 
 void BatchInstruction::generateText() {
@@ -114,7 +113,8 @@ void BatchInstruction::generateText() {
 	}
 }
 
-string BatchInstruction::getText() const {
+string BatchInstruction::getText() {
+	this->generateText();
 	return this->text;
 }
 
@@ -151,12 +151,10 @@ BatchArgument * BatchInstruction::getArgumentByName(string name) {
 
 void BatchInstruction::addArgument(BatchArgument & arg) {
 	this->arguments.push_back(arg);
-	this->generateText();
 }
 
 void BatchInstruction::removeArgument(int index) {
 	this->arguments.erase(this->arguments.begin() + index);
-	this->generateText();
 }
 
 void BatchInstruction::removeArgument(BatchArgument & arg) {
