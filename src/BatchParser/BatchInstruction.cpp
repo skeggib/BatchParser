@@ -57,10 +57,15 @@ BatchInstruction::~BatchInstruction() {
 }
 
 void BatchInstruction::parseText() {
+	// Couper l'instruction au niveau des espaces
 	vector<string> vec = StrHelper::split(this->text, " ");
+
+	// Trim de chaque bout d'instruction
 	for (int i = 0; i < vec.size(); i++) {
 		vec[i] = StrHelper::trim(vec[i]);
 	}
+
+	// Suppression de tout les bouts d'instruction vides
 	vector<string>::iterator it = vec.begin();
 	do {
 		if (*it == "")
@@ -69,26 +74,50 @@ void BatchInstruction::parseText() {
 			it++;
 	} while (it != vec.end());
 
+	// La commande est la premiere partie de l'instruction
 	this->command = vec[0];
 
 	vector<BatchArgument> arguments;
 
+	// Pour toute les autres parties de l'instruction
 	int i = 1;
 	while (i < vec.size()) {
 		BatchArgument arg;
 
+		// Si commence par '-' ou '/'
 		if (vec[i][0] == '-' || vec[i][0] == '/') {
+			// C'est un nom d'argument
 			arg.setName(vec[i]);
+			
+			// Si la partie juste apres ne commence pas par '-' ou '/'
 			i++;
-
 			if (i < vec.size() && vec[i][0] != '-' && vec[i][0] != '/') {
+				// C'est la valeur de l'argument
 				arg.setValue(vec[i]);
 				i++;
 			}
 		}
+
+		// Si non c'est juste une valeur
 		else {
 			arg.setValue(vec[i]);
 			i++;
+		}
+
+		// Si la valeur de l'argument n'est pas vide
+		// et qu'elle commence par '"'
+		// et qu'elle ne fini pas par '"'
+		if (arg.getValue().size() > 0 && arg.getValue()[0] == '"' && arg.getValue()[arg.getValue().size()-1] != '"' && i < vec.size()) {
+			// On ajoute la prochaine partie a l'argument
+			arg.setValue(arg.getValue() + " " + vec[i]);
+			i++;
+
+			// Et on continu jusqu'a ce que les guillemets soient fermes
+			while (arg.getValue()[arg.getValue().size()-1] != '"' && i < vec.size()) {
+				arg.setValue(arg.getValue() + " " + vec[i]);
+				i++;
+			}
+
 		}
 
 		arguments.push_back(arg);

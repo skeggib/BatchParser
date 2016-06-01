@@ -49,25 +49,33 @@ void TestBatchInstruction::test_setText() {
 	/* --- */
 
 	inst.setText(
-		"blender file.blend -v -d \"/home/skeggib/\" --no-console");
+		"blender file.blend -v -d \"/home/skeggib folder/\" --no-console");
 	TEST_ASSERT(inst.getText() == 
-		"blender file.blend -v -d \"/home/skeggib/\" --no-console");
+		"blender file.blend -v -d \"/home/skeggib folder/\" --no-console");
 	TEST_ASSERT(inst.getCommand() == "blender");
 	TEST_ASSERT(inst.argumentsCount() == 4);
 	if (inst.argumentsCount() < 4)
 		return;
 
-	TEST_ASSERT(inst.getArgument(0)->getName() == "");
-	TEST_ASSERT(inst.getArgument(0)->getValue() == "file.blend");
+	TEST_ASSERT_MSG(inst.getArgument(0)->getName() == "",
+		("Expected: '' Given: '" + inst.getArgument(0)->getName() + "'").c_str());
+	TEST_ASSERT_MSG(inst.getArgument(0)->getValue() == "file.blend",
+		("Expected: 'file.blend' Given: '" + inst.getArgument(0)->getValue() + "'").c_str());
 
-	TEST_ASSERT(inst.getArgument(1)->getName() == "-v");
-	TEST_ASSERT(inst.getArgument(1)->getValue() == "");
+	TEST_ASSERT_MSG(inst.getArgument(1)->getName() == "-v",
+		("Expected: '-v' Given: '" + inst.getArgument(1)->getName() + "'").c_str());
+	TEST_ASSERT_MSG(inst.getArgument(1)->getValue() == "",
+		("Expected: '' Given: '" + inst.getArgument(1)->getValue() + "'").c_str());
 
-	TEST_ASSERT(inst.getArgument(2)->getName() == "-d");
-	TEST_ASSERT(inst.getArgument(2)->getValue() == "\"/home/skeggib/\"");
+	TEST_ASSERT_MSG(inst.getArgument(2)->getName() == "-d",
+		("Expected: '-d' Given: '" + inst.getArgument(2)->getName() + "'").c_str());
+	TEST_ASSERT_MSG(inst.getArgument(2)->getValue() == "\"/home/skeggib folder/\"",
+		("Expected: '\"/home/skeggib folder/\"' Given: '" + inst.getArgument(2)->getValue() + "'").c_str());
 
-	TEST_ASSERT(inst.getArgument(3)->getName() == "--no-console");
-	TEST_ASSERT(inst.getArgument(3)->getValue() == "");
+	TEST_ASSERT_MSG(inst.getArgument(3)->getName() == "--no-console",
+		("Expected: '--no-console' Given: '" + inst.getArgument(3)->getName() + "'").c_str());
+	TEST_ASSERT_MSG(inst.getArgument(3)->getValue() == "",
+		("Expected: '' Given: '" + inst.getArgument(3)->getValue() + "'").c_str());
 
 	/* --- */
 
