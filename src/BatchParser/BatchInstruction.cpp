@@ -113,7 +113,7 @@ void BatchInstruction::parseText() {
 			i++;
 
 			// Et on continu jusqu'a ce que les guillemets soient fermes
-			while (arg.getValue()[arg.getValue().size()-1] != '"' && i < vec.size()) {
+			while (arg.getValue().find("\"") == string::npos && i < vec.size()) {
 				arg.setValue(arg.getValue() + " " + vec[i]);
 				i++;
 			}
