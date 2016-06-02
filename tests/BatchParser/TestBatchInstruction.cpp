@@ -93,8 +93,6 @@ Given: '" + inst.getText() + "'"
 	if (inst.argumentsCount() < 10)
 		return;
 
-	/* --- */
-
 	TEST_ASSERT_MSG(inst.getArgument(0)->getValue() == "lspasswd",
 		("Expected: 'lspasswd' Given: '" + inst.getArgument(0)->getValue() + "'").c_str());
 	
@@ -124,6 +122,77 @@ Given: '" + inst.getText() + "'"
 	
 	TEST_ASSERT_MSG(inst.getArgument(9)->getValue() == "\"\\\\yvun0002\\mgsvv090\\u468135\\TestVerifRendu\\Log\\currentJobIdStruct.txt\"",
 		("Expected: '\"\\\\yvun0002\\mgsvv090\\u468135\\TestVerifRendu\\Log\\currentJobIdStruct.txt\"' Given: '" + inst.getArgument(9)->getValue() + "'").c_str());
+
+	/* --- */
+
+	inst.setText("\
+\"\%MAYA_LOCATION\%\\bin\\render.exe\" \
+-r file \
+-mr:art \
+-s \%CALC_IMAGE\% \
+-e \%CALC_IMAGE\% \
+-rd \"\\\\yvun0002\\mgsvv090\\j613542\\CreativityInMotion\\la ferte\\Ville\\images\" \
+-fnc 3 \
+-pad 1 \
+-cam WheelerExt_01_FollowCam \
+-alpha 0 \
+-depth 0 \
+-im ville \
+-of jpg \
+\"\\\\yvun0002\\mgsvv090\\j613542\\CreativityInMotion\\la ferte\\Ville\\Pour-Maya\\LFV-Ville.mb\" \
+>> \
+\"\\\\yvun0002\\mgsvv090\\j613542\\mygale\\TEMP\\LF_ville_02\\appli\"\\\%LSB_JOBID\%_\%CALC_IMAGE\%_\%COMPUTERNAME\%_LF_ville_02.txt"
+);
+
+	TEST_ASSERT(inst.getCommand() == "\"\%MAYA_LOCATION\%\\bin\\render.exe\"");
+	TEST_ASSERT(inst.argumentsCount() == 15);
+	if (inst.argumentsCount() < 15)
+		return;
+
+	TEST_ASSERT_MSG(inst.getArgument(0)->getValue() == "file",
+		("Expected: 'file' Given: '" + inst.getArgument(0)->getValue() + "'").c_str());
+
+	TEST_ASSERT_MSG(inst.getArgument(1)->getName() == "-mr:art",
+		("Expected: '-mr:art' Given: '" + inst.getArgument(1)->getName() + "'").c_str());
+
+	TEST_ASSERT_MSG(inst.getArgument(2)->getValue() == "\%CALC_IMAGE\%",
+		("Expected: '\%CALC_IMAGE\%' Given: '" + inst.getArgument(2)->getValue() + "'").c_str());
+
+	TEST_ASSERT_MSG(inst.getArgument(3)->getValue() == "\%CALC_IMAGE\%",
+		("Expected: '\%CALC_IMAGE\%' Given: '" + inst.getArgument(3)->getValue() + "'").c_str());
+
+	TEST_ASSERT_MSG(inst.getArgument(4)->getValue() == "\"\\\\yvun0002\\mgsvv090\\j613542\\CreativityInMotion\\la ferte\\Ville\\images\"",
+		("Expected: '\"\\\\yvun0002\\mgsvv090\\j613542\\CreativityInMotion\\la ferte\\Ville\\images\"' Given: '" + inst.getArgument(4)->getValue() + "'").c_str());
+
+	TEST_ASSERT_MSG(inst.getArgument(5)->getValue() == "3",
+		("Expected: '3' Given: '" + inst.getArgument(5)->getValue() + "'").c_str());
+
+	TEST_ASSERT_MSG(inst.getArgument(6)->getValue() == "1",
+		("Expected: '1' Given: '" + inst.getArgument(6)->getValue() + "'").c_str());
+
+	TEST_ASSERT_MSG(inst.getArgument(7)->getValue() == "WheelerExt_01_FollowCam",
+		("Expected: 'WheelerExt_01_FollowCam' Given: '" + inst.getArgument(7)->getValue() + "'").c_str());
+
+	TEST_ASSERT_MSG(inst.getArgument(8)->getValue() == "0",
+		("Expected: '0' Given: '" + inst.getArgument(8)->getValue() + "'").c_str());
+
+	TEST_ASSERT_MSG(inst.getArgument(9)->getValue() == "0",
+		("Expected: '0' Given: '" + inst.getArgument(9)->getValue() + "'").c_str());
+
+	TEST_ASSERT_MSG(inst.getArgument(10)->getValue() == "ville",
+		("Expected: 'ville' Given: '" + inst.getArgument(10)->getValue() + "'").c_str());
+
+	TEST_ASSERT_MSG(inst.getArgument(11)->getValue() == "jpg",
+		("Expected: 'jpg' Given: '" + inst.getArgument(11)->getValue() + "'").c_str());
+
+	TEST_ASSERT_MSG(inst.getArgument(12)->getValue() == "\"\\\\yvun0002\\mgsvv090\\j613542\\CreativityInMotion\\la ferte\\Ville\\Pour-Maya\\LFV-Ville.mb\"",
+		("Expected: '\"\\\\yvun0002\\mgsvv090\\j613542\\CreativityInMotion\\la ferte\\Ville\\Pour-Maya\\LFV-Ville.mb\"' Given: '" + inst.getArgument(11)->getValue() + "'").c_str());
+
+	TEST_ASSERT_MSG(inst.getArgument(13)->getValue() == ">>",
+		("Expected: '>>' Given: '" + inst.getArgument(12)->getValue() + "'").c_str());
+
+	TEST_ASSERT_MSG(inst.getArgument(14)->getValue() == "\"\\\\yvun0002\\mgsvv090\\j613542\\mygale\\TEMP\\LF_ville_02\\appli\"\\\%LSB_JOBID\%_\%CALC_IMAGE\%_\%COMPUTERNAME\%_LF_ville_02.txt",
+		("Expected: '\"\\\\yvun0002\\mgsvv090\\j613542\\mygale\\TEMP\\LF_ville_02\\appli\"\\\%LSB_JOBID\%_\%CALC_IMAGE\%_\%COMPUTERNAME\%_LF_ville_02.txt' Given: '" + inst.getArgument(13)->getValue() + "'").c_str());
 
 	/* --- */
 
