@@ -49,33 +49,81 @@ void TestBatchInstruction::test_setText() {
 	/* --- */
 
 	inst.setText(
-		"blender file.blend -v -d \"/home/skeggib folder/\" --no-console");
-	TEST_ASSERT(inst.getText() == 
-		"blender file.blend -v -d \"/home/skeggib folder/\" --no-console");
-	TEST_ASSERT(inst.getCommand() == "blender");
-	TEST_ASSERT(inst.argumentsCount() == 4);
-	if (inst.argumentsCount() < 4)
+"bsub \
+-a lspasswd \
+-q mygale \
+-n 1,16 \
+-w \"ended(289318)\" \
+-R \"span[hosts=1] select[  mem > 6000 && ( parc_style == dedie || parc_style == presentation || parc_style == utilisateur || parc_style == holobench )]\"  \
+-J \"CreativityInMotion_X74_PFF_Urban_Epsilon_1_car_night_J613542_Mon_14_Mar_2016_17_49_27_cam02_1\"[512-532] \
+-o \"\\\\yvun0002\\mgsvv090\\u468135\\TestVerifRendu\\Log\\LSF_log.txt\" \
+\"\\\"\\\\yvun0002\\mgsvv090\\u468135\\TestVerifRendu\\Maya_batch_Urban_Epsilon_1_car_night_J613542_Mon_14_Mar_2016_17_49_27_cam02_1.bat\"\\\"  \
+> \
+\"\\\\yvun0002\\mgsvv090\\u468135\\TestVerifRendu\\Log\\currentJobIdStruct.txt\"");
+	
+	TEST_ASSERT_MSG(inst.getText() == 
+"bsub \
+-a lspasswd \
+-q mygale \
+-n 1,16 \
+-w \"ended(289318)\" \
+-R \"span[hosts=1] select[ mem > 6000 && ( parc_style == dedie || parc_style == presentation || parc_style == utilisateur || parc_style == holobench )]\" \
+-J \"CreativityInMotion_X74_PFF_Urban_Epsilon_1_car_night_J613542_Mon_14_Mar_2016_17_49_27_cam02_1\"[512-532] \
+-o \"\\\\yvun0002\\mgsvv090\\u468135\\TestVerifRendu\\Log\\LSF_log.txt\" \
+\"\\\"\\\\yvun0002\\mgsvv090\\u468135\\TestVerifRendu\\Maya_batch_Urban_Epsilon_1_car_night_J613542_Mon_14_Mar_2016_17_49_27_cam02_1.bat\"\\\" \
+> \
+\"\\\\yvun0002\\mgsvv090\\u468135\\TestVerifRendu\\Log\\currentJobIdStruct.txt\"",
+(
+"Expected: 'bsub \
+-a lspasswd \
+-q mygale \
+-n 1,16 \
+-w \"ended(289318)\" \
+-R \"span[hosts=1] select[ mem > 6000 && ( parc_style == dedie || parc_style == presentation || parc_style == utilisateur || parc_style == holobench )]\" \
+-J \"CreativityInMotion_X74_PFF_Urban_Epsilon_1_car_night_J613542_Mon_14_Mar_2016_17_49_27_cam02_1\"[512-532] \
+-o \"\\\\yvun0002\\mgsvv090\\u468135\\TestVerifRendu\\Log\\LSF_log.txt\" \
+\"\\\"\\\\yvun0002\\mgsvv090\\u468135\\TestVerifRendu\\Maya_batch_Urban_Epsilon_1_car_night_J613542_Mon_14_Mar_2016_17_49_27_cam02_1.bat\"\\\" \
+> \
+\"\\\\yvun0002\\mgsvv090\\u468135\\TestVerifRendu\\Log\\currentJobIdStruct.txt\"' \
+Given: '" + inst.getText() + "'"
+).c_str());
+
+	TEST_ASSERT(inst.getCommand() == "bsub");
+	TEST_ASSERT(inst.argumentsCount() == 10);
+	if (inst.argumentsCount() < 10)
 		return;
 
-	TEST_ASSERT_MSG(inst.getArgument(0)->getName() == "",
-		("Expected: '' Given: '" + inst.getArgument(0)->getName() + "'").c_str());
-	TEST_ASSERT_MSG(inst.getArgument(0)->getValue() == "file.blend",
-		("Expected: 'file.blend' Given: '" + inst.getArgument(0)->getValue() + "'").c_str());
+	/* --- */
 
-	TEST_ASSERT_MSG(inst.getArgument(1)->getName() == "-v",
-		("Expected: '-v' Given: '" + inst.getArgument(1)->getName() + "'").c_str());
-	TEST_ASSERT_MSG(inst.getArgument(1)->getValue() == "",
-		("Expected: '' Given: '" + inst.getArgument(1)->getValue() + "'").c_str());
-
-	TEST_ASSERT_MSG(inst.getArgument(2)->getName() == "-d",
-		("Expected: '-d' Given: '" + inst.getArgument(2)->getName() + "'").c_str());
-	TEST_ASSERT_MSG(inst.getArgument(2)->getValue() == "\"/home/skeggib folder/\"",
-		("Expected: '\"/home/skeggib folder/\"' Given: '" + inst.getArgument(2)->getValue() + "'").c_str());
-
-	TEST_ASSERT_MSG(inst.getArgument(3)->getName() == "--no-console",
-		("Expected: '--no-console' Given: '" + inst.getArgument(3)->getName() + "'").c_str());
-	TEST_ASSERT_MSG(inst.getArgument(3)->getValue() == "",
-		("Expected: '' Given: '" + inst.getArgument(3)->getValue() + "'").c_str());
+	TEST_ASSERT_MSG(inst.getArgument(0)->getValue() == "lspasswd",
+		("Expected: 'lspasswd' Given: '" + inst.getArgument(0)->getValue() + "'").c_str());
+	
+	TEST_ASSERT_MSG(inst.getArgument(1)->getValue() == "mygale",
+		("Expected: 'mygale' Given: '" + inst.getArgument(1)->getValue() + "'").c_str());
+	
+	TEST_ASSERT_MSG(inst.getArgument(2)->getValue() == "1,16",
+		("Expected: '1,16' Given: '" + inst.getArgument(2)->getValue() + "'").c_str());
+	
+	TEST_ASSERT_MSG(inst.getArgument(3)->getValue() == "\"ended(289318)\"",
+		("Expected: '\"ended(289318)\" ' Given: '" + inst.getArgument(3)->getValue() + "'").c_str());
+	
+	TEST_ASSERT_MSG(inst.getArgument(4)->getValue() == "\"span[hosts=1] select[ mem > 6000 && ( parc_style == dedie || parc_style == presentation || parc_style == utilisateur || parc_style == holobench )]\"",
+		("Expected: '\"span[hosts=1] select[  mem > 6000 && ( parc_style == dedie || parc_style == presentation || parc_style == utilisateur || parc_style == holobench )]\"' Given: '" + inst.getArgument(4)->getValue() + "'").c_str());
+	
+	TEST_ASSERT_MSG(inst.getArgument(5)->getValue() == "\"CreativityInMotion_X74_PFF_Urban_Epsilon_1_car_night_J613542_Mon_14_Mar_2016_17_49_27_cam02_1\"[512-532]",
+		("Expected: '\"CreativityInMotion_X74_PFF_Urban_Epsilon_1_car_night_J613542_Mon_14_Mar_2016_17_49_27_cam02_1\"[512-532]' Given: '" + inst.getArgument(5)->getValue() + "'").c_str());
+	
+	TEST_ASSERT_MSG(inst.getArgument(6)->getValue() == "\"\\\\yvun0002\\mgsvv090\\u468135\\TestVerifRendu\\Log\\LSF_log.txt\"",
+		("Expected: '\"\\\\yvun0002\\mgsvv090\\u468135\\TestVerifRendu\\Log\\LSF_log.txt\"' Given: '" + inst.getArgument(6)->getValue() + "'").c_str());
+	
+	TEST_ASSERT_MSG(inst.getArgument(7)->getValue() == "\"\\\"\\\\yvun0002\\mgsvv090\\u468135\\TestVerifRendu\\Maya_batch_Urban_Epsilon_1_car_night_J613542_Mon_14_Mar_2016_17_49_27_cam02_1.bat\"\\\"",
+		("Expected: '\"\\\"\\\\yvun0002\\mgsvv090\\u468135\\TestVerifRendu\\Maya_batch_Urban_Epsilon_1_car_night_J613542_Mon_14_Mar_2016_17_49_27_cam02_1.bat\"\\\"' Given: '" + inst.getArgument(7)->getValue() + "'").c_str());
+	
+	TEST_ASSERT_MSG(inst.getArgument(8)->getValue() == ">",
+		("Expected: '>' Given: '" + inst.getArgument(8)->getValue() + "'").c_str());
+	
+	TEST_ASSERT_MSG(inst.getArgument(9)->getValue() == "\"\\\\yvun0002\\mgsvv090\\u468135\\TestVerifRendu\\Log\\currentJobIdStruct.txt\"",
+		("Expected: '\"\\\\yvun0002\\mgsvv090\\u468135\\TestVerifRendu\\Log\\currentJobIdStruct.txt\"' Given: '" + inst.getArgument(9)->getValue() + "'").c_str());
 
 	/* --- */
 

@@ -107,16 +107,19 @@ void BatchInstruction::parseText() {
 		// Si la valeur de l'argument n'est pas vide
 		// et qu'elle commence par '"'
 		// et qu'elle ne fini pas par '"'
-		if (arg.getValue().size() > 0 && arg.getValue()[0] == '"' && arg.getValue()[arg.getValue().size()-1] != '"' && i < vec.size()) {
+		if (arg.getValue().size() > 0 && arg.getValue()[0] == '"' && arg.getValue().find("\"", 1) == string::npos && i < vec.size()) {
 			// On ajoute la prochaine partie a l'argument
 			arg.setValue(arg.getValue() + " " + vec[i]);
 			i++;
 
 			// Et on continu jusqu'a ce que les guillemets soient fermes
-			while (arg.getValue().find("\"") == string::npos && i < vec.size()) {
+			while (vec[i].find("\"") == string::npos && i < vec.size()) {
 				arg.setValue(arg.getValue() + " " + vec[i]);
 				i++;
 			}
+
+			arg.setValue(arg.getValue() + " " + vec[i]);
+			i++;
 
 		}
 
